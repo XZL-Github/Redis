@@ -1,5 +1,6 @@
 ﻿using RedisDemo;
 using RedisDemo.RedisSetServiceDemo;
+using RedisDemo.RedisZSetServiceDemo;
 using System;
 
 namespace My.Redis
@@ -10,14 +11,17 @@ namespace My.Redis
         {
             Console.WriteLine("Hello Redis!");
             {
-                    //RedisDemo1.Show();
+                //RedisDemo1.Show();
             }
             {
                 //OversellDemo.Show();
                 //OversellField.Show();
             }
             {
-                FriendManager.Show();
+                //FriendManager.Show();
+            }
+            {
+                RankManager.Show();
             }
 
         }

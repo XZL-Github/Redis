@@ -148,6 +148,33 @@ namespace RedisDemo
                 }
 
             }
+
+            Console.WriteLine("**********RedisZSet*********");
+            using (RedisZSetService service = new RedisZSetService())
+            {
+                service.FlushAll();//清理全部数据
+
+                service.Add("advanced", "1");
+                service.Add("advanced", "2");
+                service.Add("advanced", "5");
+                service.Add("advanced", "4");
+                service.Add("advanced", "7");
+                service.Add("advanced", "5");
+                service.Add("advanced", "9");
+
+                var result1 = service.GetAll("advanced");
+                var result2 = service.GetAllDesc("advanced");
+
+                service.AddItemToSortedSet("Sort", "BY", 123234);
+                service.AddItemToSortedSet("Sort", "走自己的路", 123);
+                service.AddItemToSortedSet("Sort", "redboy", 45);
+                service.AddItemToSortedSet("Sort", "大蛤蟆", 7567);
+                service.AddItemToSortedSet("Sort", "路人甲", 9879);
+                service.AddRangeToSortedSet("Sort", new List<string>() { "123", "花生", "加菲猫" }, 3232);
+                var result3 = service.GetAllWithScoresFromSortedSet("Sort");
+
+                //交叉并
+            }
         }
 
     }
