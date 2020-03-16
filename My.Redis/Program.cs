@@ -1,4 +1,4 @@
-﻿using RedisDemo.RedisStringServiceDemo;
+﻿using RedisDemo;
 using System;
 
 namespace My.Redis
@@ -9,11 +9,11 @@ namespace My.Redis
         {
             Console.WriteLine("Hello Redis!");
             {
-                //RedisStringDemo1.Show();
+                    RedisDemo1.Show();
             }
             {
                 //OversellDemo.Show();
-                OversellField.Show();
+                //OversellField.Show();
             }
 
         }
