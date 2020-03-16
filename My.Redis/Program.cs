@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedisDemo.RedisStringServiceDemo;
+using System;
 
 namespace My.Redis
 {
@@ -6,7 +7,15 @@ namespace My.Redis
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello Redis!");
+            {
+                //RedisStringDemo1.Show();
+            }
+            {
+                //OversellDemo.Show();
+                OversellField.Show();
+            }
+
         }
     }
 }

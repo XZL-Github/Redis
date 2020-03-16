@@ -7,7 +7,7 @@ namespace Redis.Helper.Service
     /// <summary>
     /// key-value 键值对:value可以是序列化的数据
     /// </summary>
-    public class RediStringService : RedisBase
+    public class RedisStringService : RedisBase
     {
         #region 赋值
         /// <summary>
@@ -51,7 +51,7 @@ namespace Redis.Helper.Service
         /// <typeparam name="T"></typeparam>
         /// <param name="dic"></param>
         /// <returns></returns>
-        public void Set<T>(Dictionary<string, string> dic)
+        public void Set(Dictionary<string, string> dic)
         {
             base.iRedisClient.SetAll(dic);
         }
