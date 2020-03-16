@@ -25,7 +25,7 @@ namespace RedisDemo
                 Name = "alice",
                 Remark = "测试2"
             };
-            Console.WriteLine("**********RedisString*********");
+            Console.WriteLine("**********Redis*********");
 
             using (RedisStringService service = new RedisStringService())
             {
@@ -107,6 +107,48 @@ namespace RedisDemo
                 Console.WriteLine();
 
             }
+
+            Console.WriteLine("**********RedisSet*********");
+            using (RedisSetService service=new RedisSetService())
+            {
+                service.FlushAll();
+
+                service.Add("set1", "1");
+                service.Add("set1", "1");
+                service.Add("set1", "1");
+                service.Add("set1", "1");
+                service.Add("set1", "1");
+                service.Add("set1", "2");
+                service.Add("set1", "3");
+                service.Add("set1", "7");
+                service.Add("set1", "7");
+                service.Add("set1", "7");
+                service.Add("set1", "5");
+
+                var result1=service.GetAllItemsFormSet("set1");
+                var result2=service.GetRandomItemFormSet("set1");
+                var result3 = service.GetCount("set1");
+                service.RemoveItemFormSet("set1","1");
+                {
+                    service.Add("begin", "111");
+                    service.Add("begin", "112");
+                    service.Add("begin", "115");
+                    service.Add("begin", "116");
+                    service.Add("begin", "117");
+
+                    service.Add("end", "111");
+                    service.Add("end", "112");
+                    service.Add("end", "115");
+                    service.Add("end", "114");
+                    service.Add("end", "113");
+
+                    var result4=service.GetIntersectFromSets("begin", "end");
+                    var result5 = service.GetDifferencesFromSet("begin", "end");
+                    var result6 = service.GetUnionFormSets("begin", "end");
+                }
+
+            }
         }
+
     }
 }
