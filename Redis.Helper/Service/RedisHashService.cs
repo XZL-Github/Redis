@@ -56,7 +56,7 @@ namespace Redis.Helper.Service
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        public T GetFormHash<T>(object id)
+        public T GetFromHash<T>(object id)
         {
             return base.iRedisClient.GetFromHash<T>(id);
         }

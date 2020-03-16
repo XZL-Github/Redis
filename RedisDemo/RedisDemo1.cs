@@ -20,10 +20,10 @@ namespace RedisDemo
             };
             Student student2 = new Student()
             {
-                Id=2,
-                Age=18,
-                Name="alice",
-                Remark="测试2"
+                Id = 2,
+                Age = 18,
+                Name = "alice",
+                Remark = "测试2"
             };
             Console.WriteLine("**********RedisString*********");
 
@@ -43,7 +43,7 @@ namespace RedisDemo
                 Console.WriteLine(service.Get("RedisStringService_key1"));
             }
             //序列化对象
-            using (RedisStringService service=new RedisStringService())
+            using (RedisStringService service = new RedisStringService())
             {
                 service.FlushAll();
                 service.Set("Student_1", JsonConvert.SerializeObject(student1));
@@ -52,20 +52,20 @@ namespace RedisDemo
                 //Console.WriteLine(result1.Age);
                 service.Set<Student>("Student_2", student2);
                 Console.WriteLine(service.Get("Student_2"));
-                var result2=service.Get<Student>(new List<string>() { "Student_2" });
+                var result2 = service.Get<Student>(new List<string>() { "Student_2" });
                 Console.WriteLine(result2.FirstOrDefault().Name);
                 Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
                 keyValuePairs.Add("student_1", "student-1111");
                 keyValuePairs.Add("student_2", "student-2222");
                 service.Set(keyValuePairs);
-                var result3=service.Get(keyValuePairs.Keys.ToList());
+                var result3 = service.Get(keyValuePairs.Keys.ToList());
                 foreach (var item in result3)
                 {
                     Console.WriteLine(item);
                 }
             }
 
-            using (RedisStringService service=new RedisStringService())
+            using (RedisStringService service = new RedisStringService())
             {
                 service.FlushAll();
                 service.Set<string>("student1", "梦的翅膀");
@@ -88,7 +88,7 @@ namespace RedisDemo
                 Console.WriteLine(service.DecrBy("Age", 3));
             }
 
-            using (RedisHashService service=new RedisHashService())
+            using (RedisHashService service = new RedisHashService())
             {
                 service.FlushAll();
                 service.SetEntryInHash("student", "id", "123456");
@@ -96,12 +96,14 @@ namespace RedisDemo
                 service.SetEntryInHash("student", "age", "18");
                 service.SetEntryInHash("student", "remark", "哈哈哈");
 
-                var result1=service.GetHashKeys("student");
-                var result2=service.GetHashValues("student");
+                var result1 = service.GetHashKeys("student");
+                var result2 = service.GetHashValues("student");
                 var result3 = service.GetAllEntriesFormHash("student");
                 var result4 = service.GetValueFormHash("student", "id");
-                var result5=service.SetEntryInHashIfNotExists("student", "name", "詹飒");
-                var result6=service.SetEntryInHashIfNotExists("student", "files", "您好");
+                var result5 = service.SetEntryInHashIfNotExists("student", "name", "詹飒");
+                var result6 = service.SetEntryInHashIfNotExists("student", "files", "您好");
+                service.StoreAsHash<Student>(student2);//含ID才可以的
+                var result7 = service.GetFromHash<Student>(student2.Id);//含ID才可以的
                 Console.WriteLine();
 
             }
