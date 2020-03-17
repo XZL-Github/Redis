@@ -39,7 +39,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton(typeof(RedisHashService));
             services.AddSingleton(typeof(RedisSetService));
             services.AddSingleton(typeof(RedisZSetService));
-
+            services.AddSingleton(typeof(RedisListService));
         }
         /// <summary>
         /// 默认的
@@ -67,6 +67,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton(typeof(RedisHashService));
             services.AddSingleton(typeof(RedisSetService));
             services.AddSingleton(typeof(RedisZSetService));
+            services.AddSingleton(typeof(RedisListService));
         }
     }
 }
